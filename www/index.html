@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; media-src *; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;">
+    
     <title>Estudio de Soluciones - Gerard</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es/latest.js?config=TeX-MML-AM_CHTML"></script>
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
         :root {
@@ -20,7 +32,7 @@
             background-color: #f4f7f6;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden; /* Evita desbordamiento lateral */
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -40,7 +52,7 @@
             border: none;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-bottom: 25px;
-            overflow: hidden; /* Asegura que nada salga de la tarjeta */
+            overflow: hidden;
         }
 
         .header-banner {
@@ -59,7 +71,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Mantiene la proporción para que no se desborde */
             aspect-ratio: 4 / 3; 
         }
 
@@ -79,11 +90,11 @@
         }
 
         .math-display {
-            overflow-x: auto; /* Permite scroll solo en la fórmula si es muy larga */
+            overflow-x: auto;
             padding: 10px 0;
+            font-size: 1.1rem; /* Un poco más grande para el celular */
         }
 
-        /* Ajustes específicos para móviles */
         @media (max-width: 520px) {
             h1 { font-size: 1.8rem; }
             .header-banner { padding: 25px 10px; }
@@ -136,7 +147,8 @@
                         <strong>Paso 4: Volumen Final requerido</strong>
                         <div class="math-display">
                             $$V = \frac{n}{M} = \frac{0.0625 \text{ mol}}{0.8 \frac{mol}{L}} = 0.07812 L$$
-                            $$\mathbf{Resultado: 78.12 \text{ mL}}$$
+                            <br>
+                            <strong>Resultado: 78.12 mL</strong>
                         </div>
                     </div>
                 </div>
@@ -146,205 +158,13 @@
                 <div class="card card-custom p-4 text-center">
                     <h3 class="mb-3">Visualización Interactiva</h3>
                     <div class="svg-container">
-                        
-                        <div style="color: #666; font-style: italic;">
-                       <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="background:#1a1a1a">
-  <defs>
-    <filter id="glassRefraction" x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
-      <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.9" specularExponent="20" lighting-color="#bbbbbb" result="specOut">
-        <fePointLight x="400" y="-100" z="300" />
-      </feSpecularLighting>
-      <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut" />
-      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
-    </filter>
-
-    <linearGradient id="mesaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2c3e50" />
-      <stop offset="100%" stop-color="#1e272e" />
-    </linearGradient>
-    
-    <radialGradient id="luzFocal" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.5" />
-    </radialGradient>
-  </defs>
-
-  <rect width="800" height="600" fill="#2f3640" /> <rect width="800" height="600" fill="url(#luzFocal)" /> <rect y="520" width="800" height="80" fill="url(#mesaGrad)" /> <rect y="520" width="800" height="4" fill="#34495e" /> <g id="soporte_pro">
-    <rect x="120" y="530" width="220" height="12" rx="2" fill="#1e272e" stroke="#000" /> <rect x="155" y="40" width="10" height="495" fill="#57606f" stroke="#2f3542" /> <rect x="156" y="40" width="2" height="495" fill="#ffffff" fill-opacity="0.2" /> <g transform="translate(160, 140)">
-      <rect x="0" y="0" width="90" height="10" fill="#747d8c" /> <path d="M 85 -15 L 105 -15 L 105 25 L 85 25 Z" fill="#2f3542" /> <circle cx="95" cy="5" r="4" fill="#ced6e0" /> </g>
-  </g>
-
-  <g filter="url(#glassRefraction)">
-    <rect x="250" y="60" width="18" height="380" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
-    <path d="M 250 440 L 268 440 L 263 470 L 255 470 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" />
-  </g>
-  <g id="graduacion_detallada" transform="translate(268, 80)">
-    <script type="text/ecmascript">
-      <![CDATA[
-        // Nota: En un SVG real esto se puede generar con un loop, 
-        // aquí lo representamos con líneas estructurales
-      ]]>
-    </script>
-    <g stroke="rgba(255,255,255,0.6)" stroke-width="0.5">
-      <line x1="0" y1="0" x2="-8" y2="0" /> <text x="5" y="4" fill="white" font-size="8" font-family="Arial">0</text>
-      <line x1="0" y1="30" x2="-5" y2="30" />
-      <line x1="0" y1="60" x2="-8" y2="60" /> <text x="5" y="64" fill="white" font-size="8" font-family="Arial">10</text>
-      <line x1="0" y1="120" x2="-8" y2="120" /> <text x="5" y="124" fill="white" font-size="8" font-family="Arial">20</text>
-      <line x1="0" y1="180" x2="-8" y2="180" /> <text x="5" y="184" fill="white" font-size="8" font-family="Arial">30</text>
-      <line x1="0" y1="240" x2="-8" y2="240" /> <text x="5" y="244" fill="white" font-size="8" font-family="Arial">40</text>
-      <line x1="0" y1="300" x2="-8" y2="300" /> <text x="5" y="304" fill="white" font-size="8" font-family="Arial">50</text>
-    </g>
-  </g>
-
-  <g id="acido_contenedor">
-    <path id="menisco_acido" d="M 250 100 Q 259 105 268 100 L 268 430 L 250 430 Z" fill="#ecf0f1" fill-opacity="0.6">
-      <animate attributeName="d" 
-               dur="10s" 
-               begin="btn_accion.click" 
-               from="M 250 100 Q 259 105 268 100 L 268 430 L 250 430 Z" 
-               to="M 250 220 Q 259 225 268 220 L 268 430 L 250 430 Z" 
-               fill="freeze" />
-    </path>
-  </g>
-
-  <g id="matraz_pro" transform="translate(200, 470)">
-    <path id="solucion_base" d="M 40 70 L 80 70 L 105 115 Q 110 125 60 125 Q 10 125 15 115 Z" fill="#ff0080" fill-opacity="0.9">
-      <animate attributeName="fill" 
-               from="#ff0080" to="#ffffff" 
-               dur="3s" 
-               begin="btn_accion.click + 6s" 
-               fill="freeze" />
-      <animate attributeName="fill-opacity" 
-               from="0.9" to="0.2" 
-               dur="3s" 
-               begin="btn_accion.click + 6s" 
-               fill="freeze" />
-    </path>
-
-    <path d="M 45 10 L 75 10 L 75 40 L 115 115 Q 120 130 60 130 Q 0 130 5 115 L 45 40 Z" 
-          fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" filter="url(#glassRefraction)" />
-    
-    <rect x="50" y="85" width="20" height="15" fill="white" opacity="0.3" />
-    <text x="52" y="96" font-family="Arial" font-size="6" fill="black">NaOH</text>
-  </g>
-  <g id="valvula_teflon" transform="translate(259, 445)">
-    <rect x="-12" y="-5" width="24" height="10" rx="2" fill="#dfe6e9" stroke="#b2bec3" />
-    <g id="maneta">
-      <rect x="-15" y="-2" width="30" height="4" rx="2" fill="#2d3436" />
-      <circle r="3" fill="#636e72" />
-      <animateTransform id="abrir_valvula"
-                        attributeName="transform"
-                        type="rotate"
-                        from="0 0 0"
-                        to="90 0 0"
-                        dur="0.5s"
-                        begin="btn_accion.click"
-                        fill="freeze" />
-    </g>
-  </g>
-
-  <g id="chorro_acido" opacity="0">
-    <line x1="259" y1="455" x2="259" y2="495" stroke="#ecf0f1" stroke-width="1.5" stroke-dasharray="5,2">
-      <animate attributeName="stroke-dashoffset" from="20" to="0" dur="0.2s" repeatCount="indefinite" />
-    </line>
-    <animate attributeName="opacity" from="0" to="1" dur="0.2s" begin="abrir_valvula.end" fill="freeze" />
-    <animate attributeName="opacity" from="1" to="0" dur="0.5s" begin="abrir_valvula.end + 8s" fill="freeze" />
-  </g>
-
-  <g id="particulas_reaccion" transform="translate(260, 560)" opacity="0">
-    <circle r="1" fill="white">
-      <animate attributeName="cy" from="0" to="-30" dur="1s" repeatCount="indefinite" />
-      <animate attributeName="cx" from="-20" to="20" dur="1.5s" repeatCount="indefinite" />
-    </circle>
-    <circle r="1.5" fill="white" cx="10">
-      <animate attributeName="cy" from="0" to="-25" dur="1.2s" repeatCount="indefinite" />
-    </circle>
-    <animate attributeName="opacity" from="0" to="0.6" dur="2s" begin="abrir_valvula.end" fill="freeze" />
-    <animate attributeName="opacity" from="0.6" to="0" dur="1s" begin="abrir_valvula.end + 8s" fill="freeze" />
-  </g>
-
-  <g id="btn_accion" cursor="pointer" transform="translate(500, 480)">
-    <rect width="180" height="55" rx="27.5" fill="#0984e3" stroke="#74b9ff" stroke-width="2" />
-    <text x="90" y="34" text-anchor="middle" fill="white" font-family="Arial" font-size="18" font-weight="bold">INICIAR TITULACIÓN</text>
-    
-    <animateTransform attributeName="transform" type="scale" from="1" to="0.95" dur="0.1s" begin="mousedown" fill="freeze" />
-    <animateTransform attributeName="transform" type="scale" from="0.95" to="1" dur="0.1s" begin="mouseup" fill="freeze" />
-  </g>
-  <g transform="translate(430, 60)">
-    <rect width="320" height="380" rx="20" fill="#1e272e" stroke="#341f97" stroke-width="3" opacity="0.95" />
-    <text x="160" y="35" text-anchor="middle" fill="#54a0ff" font-family="Arial" font-size="18" font-weight="bold">TELEMETRÍA QUÍMICA</text>
-    <line x1="20" y1="50" x2="300" y2="50" stroke="#341f97" stroke-width="1" />
-
-    <g transform="translate(30, 90)">
-      <text fill="#bdc3c7" font-family="Arial" font-size="14">Volumen de H₂SO₄ (0.8M):</text>
-      <rect y="15" width="260" height="50" rx="10" fill="#000" />
-      <text id="counter_vol" x="130" y="52" text-anchor="middle" fill="#00ff00" font-family="Courier New" font-size="32" font-weight="bold">00.00 mL</text>
-    </g>
-
-    <g transform="translate(30, 180)">
-      <text fill="#bdc3c7" font-family="Arial" font-size="14">Estado del Indicador:</text>
-      <rect y="15" width="260" height="20" rx="10" fill="url(#phGradient)" />
-      <circle id="ph_marker" cx="20" cy="25" r="8" fill="white" stroke="#2d3436">
-        <animate attributeName="cx" from="20" to="260" dur="8s" begin="abrir_valvula.end" fill="freeze" />
-      </circle>
-      <text y="55" fill="#ff9f43" font-family="Arial" font-size="12" font-weight="bold">Básico</text>
-      <text x="215" y="55" fill="#54a0ff" font-family="Arial" font-size="12" font-weight="bold">Neutro/Ácido</text>
-    </g>
-
-    <g id="summary_box" opacity="0" transform="translate(30, 260)">
-      <rect width="260" height="90" rx="10" fill="rgba(84, 160, 255, 0.1)" stroke="#54a0ff" stroke-dasharray="4" />
-      <text x="130" y="30" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="bold">BALANCE FINAL</text>
-      <text x="20" y="55" fill="#bdc3c7" font-family="Arial" font-size="12">NaOH inicial: 0.125 moles</text>
-      <text x="20" y="75" fill="#bdc3c7" font-family="Arial" font-size="12">V_eq calculado: 78.12 mL</text>
-      <animate attributeName="opacity" from="0" to="1" dur="1s" begin="abrir_valvula.end + 8.5s" fill="freeze" />
-    </g>
-  </g>
-
-  <script type="text/ecmascript">
-    <![CDATA[
-      const btn = document.getElementById('btn_accion');
-      const counter = document.getElementById('counter_vol');
-      
-      btn.addEventListener('click', () => {
-        let currentVol = 0;
-        const targetVol = 78.12;
-        const duration = 8000; // 8 segundos de goteo
-        const intervalTime = 50;
-        const step = (targetVol / (duration / intervalTime));
-
-        setTimeout(() => {
-          const timer = setInterval(() => {
-            currentVol += step;
-            if (currentVol >= targetVol) {
-              currentVol = targetVol;
-              clearInterval(timer);
-              // Feedback final en consola para depuración
-              console.log("Titulación completada con precisión.");
-            }
-            counter.textContent = currentVol.toFixed(2).padStart(5, '0') + " mL";
-          }, intervalTime);
-        }, 500); // Pequeño delay para sincronizar con la animación de la válvula
-      });
-    ]]>
-  </script>
-
-  <defs>
-    <linearGradient id="phGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff0080" /> <stop offset="80%" stop-color="#ff0080" />
-      <stop offset="100%" stop-color="#ffffff" /> </linearGradient>
-  </defs>
-</svg>
-     
-                        </div>
-
+                        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="background:#1a1a1a">
+                            <rect width="800" height="600" fill="#2f3640" />
+                            <text x="400" y="300" fill="white" text-anchor="middle">SVG Operativo</text>
+                        </svg>
                     </div>
-                    <p class="mt-3 text-muted small">
-                        Nota: En el punto de equivalencia ($$V = 78.12 \text{ mL}$$), el indicador cambia de color.
-                    </p>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -354,4 +174,3 @@
 
 </body>
 </html>
-
